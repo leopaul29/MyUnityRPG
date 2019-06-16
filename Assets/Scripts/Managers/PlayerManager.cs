@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(GameObject))]
 public class PlayerManager : MonoBehaviour
 {
     #region Singleton
@@ -18,10 +19,26 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    public string playerName;
     public GameObject player;
+    public CharacterCombat playerCombat;
+    public PlayerStats playerStats;
+    public PlayerAnimator playerAnimator;
 
-    public void KillPlayer()
+    public void Start()
     {
+        playerCombat = player.GetComponent<CharacterCombat>();
+        playerStats = player.GetComponent<PlayerStats>();
+        playerAnimator = player.GetComponent<PlayerAnimator>();
+
+        playerStats.OnHealthReachedZero += Die;
+    }
+
+    public void Die()
+    {
+        // make timercounter
+        new WaitForSeconds(10);
+
         // Restart the scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

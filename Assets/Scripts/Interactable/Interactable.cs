@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public string interactableName;
     // distance between the player and the target to interact
     public float radius = 3.0f;
     // Origin of the interaction

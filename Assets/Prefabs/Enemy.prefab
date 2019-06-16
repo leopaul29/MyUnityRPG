@@ -58,7 +58,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!136 &8412137202436909561
 CapsuleCollider:
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99dba1751a8e3344912a0d300051efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableName: 
   radius: 2
   interactionTransform: {fileID: 8412137202436909511}
 --- !u!114 &8412137202436909508
@@ -129,13 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16e2824803680b4ebb91c18df664faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth:
+    baseValue: 50
   damage:
     baseValue: 5
   armor:
-    baseValue: 0
-  currentHealthbar: {fileID: 0}
-  currentHealthText: {fileID: 0}
+    baseValue: 1
 --- !u!114 &8412137202436909506
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float radius = 3.0f;
     
     CharacterCombat combat;
-    bool isAutoAttack = false;
+    //bool isAutoAttack = false;
 
     // Start is called before the first frame update
     void Start()

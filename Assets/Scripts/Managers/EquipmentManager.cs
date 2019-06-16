@@ -20,6 +20,7 @@ public class EquipmentManager : MonoBehaviour
 
     Equipment[] currentEquipment;
 
+    // PlayerStats.OnEquipmentChanged
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
@@ -36,10 +37,10 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip (Equipment newItem)
     {
+        Equipment oldItem = null;
+
         // Get enum index of item's equipSlot
         int slotIndex = (int)newItem.equipSlot;
-
-        Equipment oldItem = null;
 
         // if there is already something equiped, put it back in bag
         if (currentEquipment[slotIndex] != null)
@@ -75,7 +76,7 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
-    public void UnEquipAll()
+    private void UnEquipAll()
     {
         for (int i = 0; i < currentEquipment.Length; i++)
         {

@@ -32,10 +32,7 @@ public class CharacterCombat : MonoBehaviour
         {
             StartCoroutine(DoDamage(targetStats, attackDelay));
 
-            if(OnAttack != null)
-            {
-                OnAttack();
-            }
+            OnAttack?.Invoke();
 
             // bigger is the attackspeed, smaller the cooldown is
             attackCooldown = 1f / attackSpeed;

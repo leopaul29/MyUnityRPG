@@ -5,12 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterStats))]
 public class NPC : Interactable
 {
-    PlayerManager playerManager;
-
-    void Start()
-    {
-        playerManager = PlayerManager.instance;
-    }
+    public string[] dialogue;
 
     public override void Interact()
     {
@@ -18,5 +13,6 @@ public class NPC : Interactable
         Debug.Log("Interacting with NPC");
 
         // Talk to the player
+        DialogueManager.instance.AddNewDialogue(name, dialogue);
     }
 }

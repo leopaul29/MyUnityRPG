@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 // We want Unity to serialize this class and see the fields in the inspector
@@ -21,6 +20,7 @@ public class Stat
         return finalValue;
     }
 
+    // Add a new modifier to the list
     public void AddModifier(int modifier)
     {
         if (modifier != 0)
@@ -29,6 +29,7 @@ public class Stat
         }
     }
 
+    // Remove a modifier from the list
     public void RemoveModifier(int modifier)
     {
         if (modifier != 0)

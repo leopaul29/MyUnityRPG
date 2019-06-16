@@ -6,6 +6,11 @@ public class ItemPickup : Interactable
 {
     public Item item;
 
+    public void Start()
+    {
+        this.interactableName = item.name;
+    }
+
     public override void Interact()
     {
         base.Interact();

@@ -14,7 +14,7 @@ public class TargetInfoUI : MonoBehaviour
     Interactable focus;
 
     //EnemyStats enemyStats;
-
+    public Text nameText;
     public Image currentHealthbar;
     public Text currentHealthText;
 
@@ -41,16 +41,21 @@ public class TargetInfoUI : MonoBehaviour
             {
                 targetInfoUI.SetActive(true);
 
-                UpdateEnemyInfo(targetStats);
+                UpdateTargetInfo(focus.interactableName, targetStats);
             }
         }
 
     }
 
-    private void UpdateEnemyInfo(CharacterStats targetStats)
+    private void UpdateTargetInfo(string name, CharacterStats targetStats)
     {
-        // convert value to float to get health pourcent value
-        float ratio = (float)targetStats.currentHealth / (float)targetStats.maxHealth;
+        float ratio = 0f;
+        if (targetStats.maxHealth.GetValue() != 0)
+        {
+            // convert value to float to get health pourcent value
+            ratio = (float) targetStats.currentHealth / (float) targetStats.maxHealth.GetValue();
+        }
+
         if (currentHealthbar != null && currentHealthText != null)
         {
             currentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
@@ -58,20 +63,11 @@ public class TargetInfoUI : MonoBehaviour
         }
 
         // update name
+        // make it change color depending the target is friendly, enemy, boss etc
+        nameText.text = name;
 
         // update lvl
 
         // update manabar
     }
-
-        /*private void UpdateHealthbar()
-         {
-             // convert value to float to get health pourcent value
-             float ratio = (float)playerManager.currentHealth / (float)maxHealth;
-             if (currentHealthbar != null && currentHealthText != null)
-             {
-                 currentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
-                 currentHealthText.text = (ratio * 100).ToString();
-             }
-         }*/
  }

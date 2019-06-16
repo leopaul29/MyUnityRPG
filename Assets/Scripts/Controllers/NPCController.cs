@@ -7,6 +7,8 @@ public class NPCController : MonoBehaviour
 {
     public float lookRadius = 5f;
 
+    // udpate rotation speed ?
+
     Transform target;
 
     // Start is called before the first frame update

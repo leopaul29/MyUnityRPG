@@ -20,8 +20,8 @@ public class Enemy : Interactable
 
         // How to Player interact with the Enemy object
         // Player attack the enemy for each interaction
-        CharacterCombat playerCombat = playerManager.player.GetComponent<CharacterCombat>();
-        if(playerCombat != null)
+        CharacterCombat playerCombat = playerManager.playerCombat;
+        if (playerCombat != null)
         {
             playerCombat.Attack(myStats);
         }
