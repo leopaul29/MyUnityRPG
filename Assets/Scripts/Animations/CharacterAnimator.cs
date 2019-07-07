@@ -5,27 +5,41 @@ using UnityEngine.AI;
 
 public class CharacterAnimator : MonoBehaviour
 {
+    protected const float LOCOMOTION_ANIMATION_SMOOTH_TIME = .1f;
+
     public Animator animator;
 
-    CharacterCombat combat;
-    CharacterStats stats;
-    NavMeshAgent navmeshAgent;
+    //protected CharacterCombat combat;
+    //protected CharacterStats stats;
+    protected NavMeshAgent navmeshAgent;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        navmeshAgent = GetComponent<NavMeshAgent>();
-        combat = GetComponent<CharacterCombat>();
-        stats = GetComponent<CharacterStats>();
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
 
-        combat.OnAttack += OnAttack;
-        stats.OnHealthReachedZero += OnDie;
+        navmeshAgent = GetComponent<NavMeshAgent>();
+
+        //combat = GetComponent<CharacterCombat>();
+        //stats = GetComponent<CharacterStats>();
+
+        //combat.OnAttack += OnAttack;
+        //stats.OnHealthReachedZero += OnDie;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        animator.SetFloat("Speed_Percent", navmeshAgent.velocity.magnitude / navmeshAgent.speed, .1f, Time.deltaTime);
+        // locomotion animation
+        float speedPercent = navmeshAgent.velocity.magnitude / navmeshAgent.speed;
+        animator.SetFloat("Speed_Percent", speedPercent, LOCOMOTION_ANIMATION_SMOOTH_TIME, Time.deltaTime);
+
+        // combat idle
+        // if inCombat = true && speedPercent <= .1f
+        //animator.SetBool("inCombat", combat.InCombat);
     }
 
     protected virtual void OnAttack()
@@ -41,6 +55,21 @@ public class CharacterAnimator : MonoBehaviour
     protected virtual void OnCastSpell()
     {
         animator.SetTrigger("Cast_Spell");
+    }
+
+    protected virtual void OnHit()
+    {
+        animator.SetTrigger("Hit");
+    }
+
+    protected virtual void OnStun()
+    {
+        animator.SetTrigger("Stun");
+    }
+
+    protected virtual void OnSlow()
+    {
+        animator.SetTrigger("Stun");
     }
 
     protected virtual void OnDie()

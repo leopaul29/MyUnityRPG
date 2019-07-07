@@ -72,10 +72,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa8b82fa84a3354c9641be455feb8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: PlayerName
-  player: {fileID: 0}
-  playerCombatManager: {fileID: 0}
-  playerStats: {fileID: 0}
+  PlayerName: Yrladd
+  PlayerGO: {fileID: 0}
+  Player: {fileID: 0}
+  PlayerController: {fileID: 0}
+  PlayerCombat: {fileID: 0}
+  PlayerAnimator: {fileID: 0}
+  PlayerLevel: {fileID: 0}
+  PlayerFocus: {fileID: 0}
 --- !u!114 &350238738774972230
 MonoBehaviour:
   m_ObjectHideFlags: 0

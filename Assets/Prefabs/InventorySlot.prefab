@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6028632131718017363}
   - component: {fileID: 6028632131718017362}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: ItemIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a8e126d29ff6a4c9e44239cddfa0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 6028632131718017362}
+  itemIcon: {fileID: 6028632131718017362}
   removeButon: {fileID: 6028632132542354760}
 --- !u!1 &6028632132542354762
 GameObject:

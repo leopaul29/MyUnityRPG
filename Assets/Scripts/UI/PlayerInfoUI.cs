@@ -3,42 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerInfoUI : MonoBehaviour
-{
-    PlayerManager playerManager;
-    
+public class PlayerInfoUI : MonoBehaviour, IFrameName
+{   
     [Header("Player UI informations")]
-    public Text nameText;
-    public Image currentHealthbar;
-    public Text currentHealthText;
+    public GameObject FrameInfo;
+    public Image AvatarImage;
+    public Text NameText;
+    public Image CurrentHealthbar;
+    public Text CurrentHealthText;
+    public Text LevelText;
 
-    // Start is called before the first frame update
-    void Start()
+    PlayerManager playerManager;
+
+    void Awake()
     {
         playerManager = PlayerManager.instance;
+        DisplayFrame();
+        UIEventHandler.OnPlayerHealthChanged += UpdateHealth;
+        UIEventHandler.OnPlayerManaChanged += UpdateMana;
+        UIEventHandler.OnPlayerLevelChanged += UpdateLevel;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayFrame()
     {
-        UpdatePlayerInfo();
+        FrameInfo.SetActive(true);
+        UpdateAvatar(playerManager.Player.characterIcon);
+        UpdateName(playerManager.Player.CharacterName);
     }
 
-    private void UpdatePlayerInfo()
+    public void UpdateAvatar(Sprite characterIcon)
+    {
+        AvatarImage.sprite = characterIcon;
+    }
+
+    public void UpdateName(string playerName)
+    {
+        NameText.text = playerName;
+    }
+
+    public void UpdateHealth(int currentHealth, int maxHealth)
     {
         // convert value to float to get health pourcent value
-        float ratio = (float)playerManager.playerStats.currentHealth / (float)playerManager.playerStats.maxHealth.GetValue();
-        if (currentHealthbar != null && currentHealthText != null)
+        float ratio = (float)currentHealth / (float)maxHealth;
+        if (CurrentHealthbar != null && CurrentHealthText != null)
         {
-            currentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
-            currentHealthText.text = (ratio * 100).ToString();
+            // update health progress bar
+            CurrentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+
+            // display percentage life
+            //currentHealthText.text = (ratio * 100).ToString() + "%";
+            // display current/max
+            CurrentHealthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
         }
+    }
 
-        // update name
-        nameText.text = playerManager.playerName;
+    public void UpdateMana(int currentMana, int maxMana)
+    {
+        // TODO
+    }
 
-        // update lvl
-
-        // update manabar
+    public void UpdateLevel(int level)
+    {
+        LevelText.text = level.ToString();
     }
  }

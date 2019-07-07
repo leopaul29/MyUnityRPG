@@ -33,8 +33,8 @@ public class DialogueManager : MonoBehaviour
     {
         //continueButton = dialoguePanelUI.GetComponentInChildren<Button>();
         continueButton = dialoguePanelUI.transform.Find("ContinueButton").GetComponent<Button>();
-        dialogueText = dialoguePanelUI.transform.Find("Text").GetComponent<Text>();
-        nameText = dialoguePanelUI.transform.Find("Name").GetChild(0).GetComponent<Text>();
+        dialogueText = dialoguePanelUI.transform.Find("DialogueText").GetComponent<Text>();
+        nameText = dialoguePanelUI.transform.Find("CharacterName").GetChild(0).GetComponent<Text>();
 
         dialoguePanelUI.SetActive(false);
     }

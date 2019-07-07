@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class Interactable : MonoBehaviour
 {
-    public string interactableName;
     // distance between the player and the target to interact
-    public float radius = 3.0f;
+    public float RadiusToInteract = 3.0f;
     // Origin of the interaction
     // its often the Interactable object itself (item, enemy, NPC)
     public Transform interactionTransform;
 
     // Does the player focus this object
-    bool isFocus = false;
+    bool isFocus;
     Transform player;
 
     bool hasInteracted = false;
@@ -25,11 +25,14 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (isFocus && !hasInteracted)
+        Debug.Log("Interactable0:isFocus="+ isFocus+ "/hasInteracted="+ hasInteracted+ "/Input.GetMouseButtonDown(0)="+ Input.GetMouseButtonDown(0));
+        if (isFocus && !hasInteracted && Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Interactable1");
             float distance = Vector3.Distance(player.position, interactionTransform.position);
-            if(distance <= radius)
+            if(distance <= RadiusToInteract)
             {
+                Debug.Log("Interactable2");
                 Interact();
                 hasInteracted = true;
             }
@@ -60,6 +63,6 @@ public class Interactable : MonoBehaviour
 
         // Display the wireframe when selected
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(interactionTransform.position, radius);
+        Gizmos.DrawWireSphere(interactionTransform.position, RadiusToInteract);
     }
 }

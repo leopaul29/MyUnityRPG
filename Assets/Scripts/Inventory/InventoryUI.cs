@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
-{
+{ 
     // contains all InventorySlot to update
     public Transform itemsParent;
     public GameObject inventoryUI;
 
     // Inventory Singleton
-    Inventory inventory;
+    InventoryManager inventory;
 
     // Get all InventorySlot of the UI
     InventorySlot[] slots;
@@ -15,16 +15,19 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inventory = Inventory.instance;
+        inventory = InventoryManager.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
         // find and store all InventorySlots components 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+
+        UpdateUI();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // KeyCode B
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);

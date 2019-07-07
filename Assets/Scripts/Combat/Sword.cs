@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour, IWeapon
     public void Start()
     {
         animator = GetComponent<Animator>();
-        PlayerManager.instance.playerCombat.OnAttack += PerformAttack;
+        PlayerManager.instance.PlayerCombat.OnAttack += PerformAttack;
 
     }
 

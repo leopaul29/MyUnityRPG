@@ -3,61 +3,120 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
 {
-    // looking for target at distance
-    public float lookRadius = 5.0f;
-    // stopping distance margin to auto attack
-    readonly float margin = 0.2f;
-    Transform target;
+    [Tooltip("Will lookfor only Object in Player Layer")]
+    public LayerMask aggroLayerMask;
+    [Tooltip("looking for target within that range distance")]
+    public float detectionRadius = 5.0f;
+
+    public float meleAttackRange = 2.0f;
+
+    // chase and stop chase property
     NavMeshAgent agent;
-    CharacterCombat combat;
+    Collider[] withinAggroColliders;
+    Player player;
+    Transform targetTransform;
+    Vector3 originPosition;
+
+    // handle patrolling animation
+    bool isPatrolling;
+    //Animator animator;
+
+    //CharacterCombat combat;
+    //CharacterStats stats;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Main interaction with target
-        target = PlayerManager.instance.player.transform;
-        // Movement terrain
         agent = GetComponent<NavMeshAgent>();
-        // Combat status
-        combat = GetComponent<CharacterCombat>();
+        agent.stoppingDistance = meleAttackRange;
+        originPosition = transform.position;
+        isPatrolling = true;
+
+        //animator = GetComponent<Animator>();
+        //animator.SetBool("isPatrolling", isPatrolling);        
+    }
+    
+    private void FixedUpdate()
+    {
+        withinAggroColliders = Physics.OverlapSphere(transform.position, detectionRadius, aggroLayerMask);
+        if (withinAggroColliders.Length > 0)
+        {
+            //Debug.Log("Player in detectionRadius");
+            player = withinAggroColliders[0].GetComponent<Player>();
+            targetTransform = player.transform;
+
+            ChasePlayer(player);
+        } else
+        {
+            //Debug.Log("Player not in detectionRadius");
+            Patrol();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void ChasePlayer(Player player)
     {
-        /*
-         * Enemy in combat mode will move to the target and attack auto
-         */
-        float distance = Vector3.Distance(target.position, transform.position);
+        isPatrolling = false;
 
-        if(distance <= lookRadius)
+        this.player = player;
+        if(agent.remainingDistance <= agent.stoppingDistance)
         {
-            // Enemy move to target direction
-            agent.SetDestination(target.position);
-
-            // if enemy is at shorter distance than stoppingDistance of the target of at least 0.2f
-            if (distance <= agent.stoppingDistance + margin)
+            FaceTarget();
+            Debug.Log("Call Enemy.ChasePlayer");
+            // if method is not invoked yet, then do it once
+            if (!IsInvoking("PerformAttack"))
             {
-                // Attack the target
-                CharacterStats targetStats = target.GetComponent<CharacterStats>();
-                if(targetStats != null)
-                {
-                    combat.Attack(targetStats);
-                }
-
-                // Face the target
-                FaceTarget();
+                //InvokeRepeating(method, starting time, everyTime);
+                InvokeRepeating("PerformAttack", 0.5f, 0.1f);
             }
         }
+        else
+        {
+            // cancel invoke when to far
+            CancelInvoke("PerformAttack");
+        }
+
+        // move the enemy to the player direction
+        agent.SetDestination(player.transform.position);
+    }
+
+    void Patrol()
+    {
+        //Debug.Log("Call Enemy.Patrol");
+        // back to origin position
+        if (!isPatrolling)
+        {
+            Debug.Log("Coming back to origin position");
+            agent.SetDestination(originPosition);
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                isPatrolling = true;
+            }
+        }
+        // set animation to patrol
+        else
+        {
+            //Debug.Log("remainingDistance " + agent.remainingDistance);
+            //Debug.Log("destination " + agent.destination);
+        }
+    }
+
+    void PerformAttack()
+    {
+        Debug.Log("Call Enemy.PerformAttack");
+        //launch an EVENT to combat attack !!!!
+        //combat.Attack(target.GetComponent<CharacterStats>());
     }
 
     void FaceTarget()
     {
         // direction of the target
         // When normalized, a vector keeps the same direction but its length is 1.0.
-        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 direction = (targetTransform.position - transform.position).normalized;
         // Get the rotation to point that target
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         // Apply the rotation to the enemy
@@ -68,8 +127,12 @@ public class EnemyController : MonoBehaviour
     // Gizmos are used to give visual debugging or setup aids in the Scene view
     private void OnDrawGizmosSelected()
     {
-        // Display the wireframe when selected
+        // draw detection chase player range in red
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+        // draw melee attack range in yellow
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, meleAttackRange);
     }
 }

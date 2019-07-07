@@ -1,19 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Image icon;
+    public Image itemIcon;
     public Button removeButon;
+    public ItemTooltip itemTooltip;
 
     Item item;
+
+    public void OnValidate()
+    {
+        if (itemTooltip == null)
+            itemTooltip = FindObjectOfType<ItemTooltip>();
+    }
 
     public void AddItem(Item newItem)
     {
         item = newItem;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
+        itemIcon.sprite = item.Icon;
+        itemIcon.enabled = true;
         removeButon.interactable = true;
     }
 
@@ -21,21 +29,53 @@ public class InventorySlot : MonoBehaviour
     {
         item = null;
 
-        icon.sprite = null;
-        icon.enabled = false;
+        itemIcon.sprite = null;
+        itemIcon.enabled = false;
         removeButon.interactable = false;
     }
 
+    #region UnityEventResponders
     public void OnRemoveButton()
     {
-        Inventory.instance.Remove(item);
+        InventoryManager.instance.Remove(item);
     }
 
     public void UseItem()
     {
-        if(item != null)
+        if(item is UsableItem)
+        {
+            ((UsableItem)item).Use(PlayerManager.instance.Player);
+        }
+         else if(item != null)
         {
             item.Use();
+        }
+    }
+    #endregion
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ShowTooltip(this);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        HideTooltip(this);
+    }
+
+    private void ShowTooltip(InventorySlot itemSlot)
+    {
+        if (itemSlot.item != null)
+        {
+            itemTooltip.ShowTooltip(itemSlot.item);
+        }
+    }
+
+    private void HideTooltip(InventorySlot itemSlot)
+    {
+        if (itemTooltip.gameObject.activeSelf)
+        {
+            itemTooltip.HideTooltip();
         }
     }
 }

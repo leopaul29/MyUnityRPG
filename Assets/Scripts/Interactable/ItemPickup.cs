@@ -1,20 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ItemPickup : Interactable
 {
-    public Item item;
+    //public static event  Action<ItemPickup> OnAnyItemPickedUp = delegate { };
 
-    public void Start()
-    {
-        this.interactableName = item.name;
-    }
+    public Item item;
 
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Interacting with item " + item.name);
+        Debug.Log("Interacting with ItemPickup " + item.ItemName);
 
         PickUp();
     }
@@ -22,11 +20,13 @@ public class ItemPickup : Interactable
     void PickUp()
     {
         // Add to inventory
-        bool wasPickedUp = Inventory.instance.Add(item);
+        bool wasPickedUp = InventoryManager.instance.Add(item);
 
         if(wasPickedUp)
         {
             Destroy(gameObject);
         }
+
+        //OnAnyItemPickedUp(this);
     }
 }

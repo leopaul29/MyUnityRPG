@@ -3,23 +3,114 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TargetInfoUI : MonoBehaviour
+public class TargetInfoUI : MonoBehaviour, IFrameName
 {
-    // to display enemy life
-    // enemy = player.focus.EnemyStats
-
     // contains all enemyInfoUI to update
-    public GameObject targetInfoUI;
-    PlayerManager playerManager;
-    Interactable focus;
+    // required to display the window target info
+    public GameObject FrameInfo;
+    public Image AvatarImage;
+    public Text NameText;
+    public Image CurrentHealthbar;
+    public Text CurrentHealthText;
+    public Text LevelText;
 
-    //EnemyStats enemyStats;
-    public Text nameText;
-    public Image currentHealthbar;
-    public Text currentHealthText;
+    PlayerFocus playerFocus;
+    Character character;
+
+    void Awake()
+    {
+        UIEventHandler.OnPlayerFocusChanged += DisplayFrame;
+        UIEventHandler.OnTargetHealthChanged += UpdateHealth;
+        UIEventHandler.OnTargetHealthChanged += UpdateMana;
+    }
+
+    private void Start()
+    {
+        playerFocus = PlayerManager.instance.PlayerFocus;
+    }
+
+    public void DisplayFrame()
+    {
+        if(playerFocus != null) { 
+            Interactable focus = playerFocus.focus;
+            //Debug.Log("focus:" + focus.GetType());
+            if (focus != null && (focus is EnemyInteraction || focus is NPCInteraction))
+            {
+                FrameInfo.SetActive(true);
+
+                character = focus.GetComponent<Character>();
+                Debug.Log("character:" + character);
+                // is it a character to display ?
+                if (character != null)
+                {
+                    UpdateFrameInfo(character);
+                }
+
+            } else
+            {
+                FrameInfo.SetActive(false);
+            }
+        }
+    }
+
+    public void UpdateFrameInfo(Character character)
+    {
+        UpdateAvatar(character.characterIcon);
+        UpdateName(character.CharacterName);
+        character.NotifyHealthChanged();
+        UpdateLevel(character.Level);
+    }
+
+    public void UpdateAvatar(Sprite characterIcon)
+    {
+        AvatarImage.sprite = characterIcon;
+    }
+
+    public void UpdateName(string targetName)
+    {
+        if(playerFocus.focus is EnemyInteraction)
+        {
+            NameText.color = Color.red;
+        }
+        else if(playerFocus.focus is NPCInteraction)
+        {
+            NameText.color = Color.green;
+        }
+        else
+        {
+            NameText.color = Color.yellow;
+        }
+
+        NameText.text = targetName;
+    }
+
+    public void UpdateHealth(int currentHealth, int maxHealth) 
+    {
+        float ratio = (float)currentHealth / (float)maxHealth;
+        if (CurrentHealthbar != null && CurrentHealthText != null)
+        {
+            // update health progress bar
+            CurrentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+
+            // display percentage life
+            //currentHealthText.text = (ratio * 100).ToString() + "%";
+            // display current/max
+            CurrentHealthText.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+        }
+    }
+
+    public void UpdateMana(int currentMana, int maxMana)
+    {
+        // TODO
+    }
+
+    public void UpdateLevel(int level)
+    {
+        LevelText.text = level.ToString();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         playerManager = PlayerManager.instance;
     }
@@ -27,7 +118,7 @@ public class TargetInfoUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerController playerController = playerManager.player.GetComponent<PlayerController>();
+        PlayerController playerController = playerManager.PlayerController;
         focus = playerController.focus;
         // not display target info
         targetInfoUI.SetActive(false);
@@ -45,29 +136,5 @@ public class TargetInfoUI : MonoBehaviour
             }
         }
 
-    }
-
-    private void UpdateTargetInfo(string name, CharacterStats targetStats)
-    {
-        float ratio = 0f;
-        if (targetStats.maxHealth.GetValue() != 0)
-        {
-            // convert value to float to get health pourcent value
-            ratio = (float) targetStats.currentHealth / (float) targetStats.maxHealth.GetValue();
-        }
-
-        if (currentHealthbar != null && currentHealthText != null)
-        {
-            currentHealthbar.rectTransform.localScale = new Vector3(ratio, 1, 1);
-            currentHealthText.text = (ratio * 100).ToString();
-        }
-
-        // update name
-        // make it change color depending the target is friendly, enemy, boss etc
-        nameText.text = name;
-
-        // update lvl
-
-        // update manabar
-    }
- }
+    }*/
+}
