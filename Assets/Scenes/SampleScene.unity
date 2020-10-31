@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf15111943f8ec643a6d9e6b35c98e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  RadiusToInteract: 3
   interactionTransform: {fileID: 925599574}
   item: {fileID: 11400000, guid: 1236de0191a2f434db52943ad4f36008, type: 2}
 --- !u!65 &925599571
@@ -3362,7 +3362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf15111943f8ec643a6d9e6b35c98e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  RadiusToInteract: 3
   interactionTransform: {fileID: 1774374350}
   item: {fileID: 11400000, guid: 7da88344a8e55e540b394e2c0804cad2, type: 2}
 --- !u!65 &1774374347
@@ -3666,7 +3666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0529f729007d7744ba72115b66b680b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  RadiusToInteract: 3
   interactionTransform: {fileID: 1848690534}
 --- !u!1 &1877676785
 GameObject:
@@ -3791,7 +3791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf15111943f8ec643a6d9e6b35c98e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  RadiusToInteract: 3
   interactionTransform: {fileID: 1882099170}
   item: {fileID: 11400000, guid: 28dea2b4dcf22974c9900610554abcb5, type: 2}
 --- !u!65 &1882099167
@@ -4280,7 +4280,13 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 964155587}
-    m_RemovedComponents: []
+    - target: {fileID: 350238738207577640, guid: 769dac3dbf73a144d9244164d4e325c1,
+        type: 3}
+      propertyPath: PlayerGO
+      value: 
+      objectReference: {fileID: 964155587}
+    m_RemovedComponents:
+    - {fileID: 350238738774972230, guid: 769dac3dbf73a144d9244164d4e325c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 769dac3dbf73a144d9244164d4e325c1, type: 3}
 --- !u!1001 &3007845416463653746
 PrefabInstance:
