@@ -38,6 +38,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnRemoveButton()
     {
         InventoryManager.instance.Remove(item);
+
+        // hide the tooltip after removing it
+        HideTooltip(this);
     }
 
     public void UseItem()
@@ -50,6 +53,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             item.Use();
         }
+
+        // hide the tooltip after use
+        HideTooltip(this);
     }
     #endregion
 

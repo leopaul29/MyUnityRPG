@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Interactable0:isFocus="+ isFocus+ "/hasInteracted="+ hasInteracted+ "/Input.GetMouseButtonDown(0)="+ Input.GetMouseButtonDown(0));
+        //Debug.Log("Interactable0:isFocus="+ isFocus+ "/hasInteracted="+ hasInteracted+ "/Input.GetMouseButtonDown(0)="+ Input.GetMouseButtonDown(0));
         if (isFocus && !hasInteracted && Input.GetMouseButtonDown(0))
         {
             Debug.Log("Interactable1");

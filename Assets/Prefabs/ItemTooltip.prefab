@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item Type Text
+  m_Text: Weapon
 --- !u!1 &2808500289509063314
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item Name Text
+  m_Text: Sword of Destiny
 --- !u!1 &2808500289806906339
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Item Description Text
+  m_Text: "+3 Strength\r\n+1 Agility\r\n+1 Stamina"
 --- !u!1 &2808500290843937372
 GameObject:
   m_ObjectHideFlags: 0
