@@ -255,6 +255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 6028632131718017362}
   removeButon: {fileID: 6028632132542354760}
+  itemTooltip: {fileID: 2808500289806906365, guid: 232fda86358195546aca221ede0521c1,
+    type: 3}
 --- !u!1 &6028632132542354762
 GameObject:
   m_ObjectHideFlags: 0
