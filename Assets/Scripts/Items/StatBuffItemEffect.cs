@@ -7,6 +7,11 @@ public class StatBuffItemEffect : UsableItemEffect
     public int AgilityBuff;
     public float Duration;
 
+    public override bool CanExecuteEffect(UsableItem parentItem, Character character)
+    {
+        return true;
+    }
+
     public override void ExecuteEffect(UsableItem parentItem, Character character)
     {
         StatModifier statModifier = new StatModifier(AgilityBuff, StatModType.Flat, parentItem);

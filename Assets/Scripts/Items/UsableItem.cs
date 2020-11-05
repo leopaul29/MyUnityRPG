@@ -12,6 +12,15 @@ public class UsableItem : Item
     {
         base.Use();
 
+        // check if can be used
+        foreach (UsableItemEffect effect in Effects)
+        {
+            if(!effect.CanExecuteEffect(this, character))
+            {
+                return;
+            }
+        }
+
         foreach (UsableItemEffect effect in Effects)
         {
             effect.ExecuteEffect(this, character);

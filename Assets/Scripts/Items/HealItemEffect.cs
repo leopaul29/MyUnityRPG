@@ -5,6 +5,11 @@ public class HealItemEffect : UsableItemEffect
 {
     public int HealAmount;
 
+    public override bool CanExecuteEffect(UsableItem usableItem, Character character)
+    {
+        return !character.IsFullLife;
+    }
+
     public override void ExecuteEffect(UsableItem usableItem, Character character)
     {
         character.GetHeal(HealAmount);
