@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : CharacterStats
@@ -48,7 +48,7 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    // to erased or move !
+    #region to erased or move !
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -76,4 +76,5 @@ public class PlayerStats : CharacterStats
     {
         equippedIWeapon.PerformSpecialAttack();
     }
+    #endregion
 }
