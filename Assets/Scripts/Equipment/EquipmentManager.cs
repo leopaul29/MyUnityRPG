@@ -58,10 +58,11 @@ public class EquipmentManager : MonoBehaviour
 
         // Update when equip
         // add stats
-        if (onEquipmentChangedUpdateStats != null)
+        newItem.Equip(PlayerManager.instance.Player);
+        /*if (onEquipmentChangedUpdateStats != null)
         {
             onEquipmentChangedUpdateStats.Invoke(newItem, oldItem);
-        }
+        }*/
         // update equipment UI
         if (onEquipmentChangedUpdateUI != null)
         {
@@ -82,10 +83,11 @@ public class EquipmentManager : MonoBehaviour
 
             // Update when unequip
             // remove stat
-            if (onEquipmentChangedUpdateStats != null)
+            oldItem.Unequip(PlayerManager.instance.Player);
+            /*if (onEquipmentChangedUpdateStats != null)
             {
                 onEquipmentChangedUpdateStats.Invoke(null, oldItem);
-            }
+            }*/
             // update equipment UI
             if (onEquipmentChangedUpdateUI != null)
             {

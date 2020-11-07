@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class Equipment : Item
 {
     [Header("Flat stats")]
     public int StrengthBonus;
-    public int AgilityBonus;
+    public StatModifier AgilityBonus;
     public int IntelligenceBonus;
     public int StaminaBonus;
     [Space]
@@ -46,8 +46,13 @@ public class Equipment : Item
     {
         if (StrengthBonus != 0)
             c.Strength.AddModifier(new StatModifier(StrengthBonus, StatModType.Flat, this));
-        if (AgilityBonus != 0)
-            c.Agility.AddModifier(new StatModifier(AgilityBonus, StatModType.Flat, this));
+        //if (AgilityBonus != 0)
+        //c.Agility.AddModifier(new StatModifier(AgilityBonus, StatModType.Flat, this));
+        if (AgilityBonus.Value != 0) {
+            AgilityBonus.Source = this;
+            c.Agility.AddModifier(AgilityBonus);
+
+        }
         if (IntelligenceBonus != 0)
             c.Intelligence.AddModifier(new StatModifier(IntelligenceBonus, StatModType.Flat, this));
         if (StaminaBonus != 0)
@@ -80,7 +85,8 @@ public class Equipment : Item
     {
         sb.Length = 0;
         AddStat(StrengthBonus, "Strength");
-        AddStat(AgilityBonus, "Agility");
+        //AddStat(AgilityBonus, "Agility");
+        AddStat(AgilityBonus.Value, "Agility");
         AddStat(IntelligenceBonus, "Intelligence");
         AddStat(StaminaBonus, "Stamina");
 

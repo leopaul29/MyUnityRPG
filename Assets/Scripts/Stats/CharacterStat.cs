@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using UnityEngine;
 
 // https://www.youtube.com/watch?v=SH25f3cXBVc
 [Serializable]
-public class CharacterStat
+// to create an object in the editor
+[CreateAssetMenu(fileName = "New CharacterStat", menuName = "Stats/CharacterStat")]
+public class CharacterStat : ScriptableObject
 {
     public float BaseValue;
 

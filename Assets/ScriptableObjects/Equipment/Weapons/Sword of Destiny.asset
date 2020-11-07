@@ -17,9 +17,8 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 6adb2961d0d7812448995e4e95155829, type: 3}
   MaximumStacks: 1
   ObjectSlug: sword
-  StatModifier: 1
   StrengthBonus: 3
-  AgilityBonus: 1
+  AgilityBonus: {fileID: 11400000, guid: b39c07cf41ede8341ba848843203eaa5, type: 2}
   IntelligenceBonus: 0
   StaminaBonus: 1
   StrengthPercentBonus: 0
