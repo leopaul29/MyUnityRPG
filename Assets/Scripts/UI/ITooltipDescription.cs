@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITooltipDescription
+public interface IDescription
 {
-    string GetTooltipDescription();
+    string GetDescription();
 }

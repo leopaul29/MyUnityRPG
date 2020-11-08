@@ -12,7 +12,7 @@ public enum ItemType
 }
 
 // ScriptableObject is like a blueprint, not a GameObject
-public abstract class ItemObject : ScriptableObject, ITooltipDescription
+public abstract class ItemObject : ScriptableObject, IDescription
 {
     [Header("ItemObject")]
     public GameObject prefab;
@@ -54,11 +54,6 @@ public abstract class ItemObject : ScriptableObject, ITooltipDescription
         return "";
     }
 
-    public virtual string GetDescription()
-    {
-        return "";
-    }
-
     // when click on it in the inventory
     public virtual void Use()
     {
@@ -77,7 +72,7 @@ public abstract class ItemObject : ScriptableObject, ITooltipDescription
         InventoryManager.instance.Remove(this);
     }
 
-    public string GetTooltipDescription()
+    public virtual string GetDescription()
     {
         return this.description;
     }
