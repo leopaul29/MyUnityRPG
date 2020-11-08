@@ -7,7 +7,7 @@ using UnityEditor;
 // to create an object in the editor
 [CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
 // ScriptableObject is like a blueprint, not a GameObject
-public class Item : ScriptableObject
+public abstract class Item : ScriptableObject
 {
     [SerializeField] string id;
     public string ID { get { return id; } }
