@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Usable Item")]
-public class UsableItem : Item
+public class UsableItem : ItemObject
 {
     public bool IsConsumable;
 

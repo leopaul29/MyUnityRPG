@@ -4,16 +4,28 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+public enum ItemType
+{
+    Food,
+    Equipment,
+    Default
+}
+
 // to create an object in the editor
 [CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
 // ScriptableObject is like a blueprint, not a GameObject
-public abstract class Item : ScriptableObject
+public abstract class ItemObject : ScriptableObject, ITooltipDescription
 {
+    public GameObject prefab;
+    public ItemType type;
+    [TextArea(15, 20)]
+    public string description;
+
     [SerializeField] string id;
     public string ID { get { return id; } }
     public string ItemName;
     public Sprite Icon = null;
-    [Range(1, 999)]
+    [Range(1, 100)]
     public int MaximumStacks = 1;
     public int Rarity { get; set; }
     public string ObjectSlug;
@@ -28,7 +40,7 @@ public abstract class Item : ScriptableObject
     }
 #endif
 
-    public virtual Item GetCopy()
+    public virtual ItemObject GetCopy()
     {
         return this;
     }
@@ -64,5 +76,10 @@ public abstract class Item : ScriptableObject
     public void RemoveFromInventory()
     {
         InventoryManager.instance.Remove(this);
+    }
+
+    public string GetTooltipDescription()
+    {
+        return this.description;
     }
 }

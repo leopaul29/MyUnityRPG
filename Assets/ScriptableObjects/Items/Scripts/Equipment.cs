@@ -4,7 +4,7 @@ using UnityEngine;
 
 // to create an object in the editor
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Items/Equipment")]
-public class Equipment : Item
+public class Equipment : ItemObject
 {
     [Header("Flat stats")]
     public int StrengthBonus;
@@ -32,7 +32,7 @@ public class Equipment : Item
         RemoveFromInventory();
     }
 
-    public override Item GetCopy()
+    public override ItemObject GetCopy()
     {
         return Instantiate(this);
     }

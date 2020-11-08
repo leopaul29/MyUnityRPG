@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Item item;
+    public ItemObject item;
     public int amount;
 
     private Transform originalParent;

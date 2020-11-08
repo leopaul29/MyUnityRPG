@@ -24,9 +24,9 @@ public class InventoryManager : MonoBehaviour
 
     // Inventory size and list
     public int space = 20;
-    public List<Item> items = new List<Item>(); // should be a tab
+    public List<ItemObject> items = new List<ItemObject>(); // should be a tab
 
-    public bool Add(Item item)
+    public bool Add(ItemObject item)
     {
         //if(!item.isDefaultItem)
         //{
@@ -43,7 +43,7 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
-    public void Remove(Item item)
+    public void Remove(ItemObject item)
     {
         items.Remove(item);
 

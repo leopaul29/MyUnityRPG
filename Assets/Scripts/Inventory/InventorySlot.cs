@@ -8,7 +8,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Button removeButon;
     public ItemTooltip itemTooltip;
 
-    Item item;
+    ItemObject item;
 
     public void OnValidate()
     {
@@ -16,7 +16,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             itemTooltip = FindObjectOfType<ItemTooltip>();
     }
 
-    public void AddItem(Item newItem)
+    public void AddItem(ItemObject newItem)
     {
         item = newItem;
 

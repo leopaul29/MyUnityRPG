@@ -7,7 +7,7 @@ public class ItemPickup : Interactable
 {
     //public static event  Action<ItemPickup> OnAnyItemPickedUp = delegate { };
 
-    public Item item;
+    public ItemObject item;
 
     public override void Interact()
     {

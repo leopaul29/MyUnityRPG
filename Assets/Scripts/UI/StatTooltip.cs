@@ -71,7 +71,7 @@ public class StatTooltip : MonoBehaviour
                 sb.Append("%");
             }
 
-            Item item = mod.Source as Item;
+            ItemObject item = mod.Source as ItemObject;
 
             if (item != null)
             {

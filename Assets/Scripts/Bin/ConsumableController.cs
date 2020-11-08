@@ -12,7 +12,7 @@ public class ConsumableController : MonoBehaviour
         //stats = PlayerManager.instance.PlayerStats;
     }
 
-    public void ConsumeItem(Item item)
+    public void ConsumeItem(ItemObject item)
     {
         GameObject itemToSpawn = Instantiate(Resources.Load<GameObject>("Consumables/" + item.ObjectSlug));
         //if (item.ItemModifier)
