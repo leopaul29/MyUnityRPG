@@ -15,7 +15,7 @@ public class StatBuffItemEffect : UsableItemEffect
     public override void ExecuteEffect(UsableItem parentItem, Character character)
     {
         StatModifier statModifier = new StatModifier(AgilityBuff, StatModType.Flat, parentItem);
-        character.Agility.AddModifier(statModifier);
+        character.characterStats.Agility.AddModifier(statModifier);
         UIEventHandler.StatsChanged();
         character.StartCoroutine(RemoveBuff(character, statModifier, Duration));
     }
@@ -28,7 +28,7 @@ public class StatBuffItemEffect : UsableItemEffect
     private static IEnumerator RemoveBuff(Character character, StatModifier statModifier, float duration)
     {
         yield return new WaitForSeconds(duration);
-        character.Agility.RemoveModifier(statModifier);
+        character.characterStats.Agility.RemoveModifier(statModifier);
         UIEventHandler.StatsChanged();
     }
 }

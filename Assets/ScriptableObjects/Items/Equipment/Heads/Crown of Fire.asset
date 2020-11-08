@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f639b97d5523044f97175700abbe407, type: 3}
   m_Name: Crown of Fire
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  type: 1
+  description: 
   id: 28dea2b4dcf22974c9900610554abcb5
   ItemName: Crown of Fire
   Icon: {fileID: 21300000, guid: a4b33dd929995204c91b614880f3d714, type: 3}
   MaximumStacks: 1
   ObjectSlug: 
-  StrengthBonus: 3
-  AgilityBonus: 2
+  ArmorBonus: 0
+  StrengthBonus: 2
+  AgilityBonus: 1
   IntelligenceBonus: 0
-  StaminaBonus: 1
+  StaminaBonus: 0
+  ArmorPercentBonus: 0
   StrengthPercentBonus: 0
-  AgilityPercentBonus: 0.01
+  AgilityPercentBonus: 0
   IntelligencePercentBonus: 0
   StaminaPercentBonus: 0
   equipSlotName: 0

@@ -12,16 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f639b97d5523044f97175700abbe407, type: 3}
   m_Name: Helmet of Protection
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  type: 1
+  description: 
   id: 7da88344a8e55e540b394e2c0804cad2
   ItemName: Helmet of Protection
   Icon: {fileID: 21300000, guid: 25c0c42e864770c4e986c4ffc413a3bb, type: 3}
   MaximumStacks: 1
   ObjectSlug: 
+  ArmorBonus: 5
   StrengthBonus: 2
   AgilityBonus: 0
   IntelligenceBonus: 0
-  StaminaBonus: 4
-  StrengthPercentBonus: 0.02
+  StaminaBonus: 0
+  ArmorPercentBonus: 0
+  StrengthPercentBonus: 0
   AgilityPercentBonus: 0
   IntelligencePercentBonus: 0
   StaminaPercentBonus: 0

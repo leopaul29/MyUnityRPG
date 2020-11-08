@@ -14,13 +14,7 @@ public abstract class Character : MonoBehaviour, ICharacter
     public bool IsAlive { get; set; }
     public bool IsFullLife { get { return health.IsFullLife(); } }
 
-    #region Character Stats
-    public CharacterStat Armor;
-    public CharacterStat Strength;
-    public CharacterStat Agility;
-    public CharacterStat Intelligence;
-    public CharacterStat Stamina;
-    #endregion
+    public CharacterStats characterStats;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -35,7 +29,7 @@ public abstract class Character : MonoBehaviour, ICharacter
 
     public void UpdateStats()
     {
-        health.MaxHealth += (int)Stamina.Value * 10;
+        health.MaxHealth += (int)characterStats.Stamina.Value * 10;
     }
 
     public void FullHeal()

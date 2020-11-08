@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if (distance <= radius)
         {
             // Attack the target
-            CharacterStats targetStats = focus.GetComponent<CharacterStats>();
+            CharacterStatsBin targetStats = focus.GetComponent<CharacterStatsBin>();
             if (targetStats != null)
             {
 
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Call Player PerformAttack");
         if (focus != null)
         {
-            CharacterStats targetStats = focus.GetComponent<CharacterStats>();
+            CharacterStatsBin targetStats = focus.GetComponent<CharacterStatsBin>();
             combat.Attack(targetStats);
         }
     }

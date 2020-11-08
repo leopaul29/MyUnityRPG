@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class CharacterStats: MonoBehaviour
+public class CharacterStatsBin: MonoBehaviour
 {
     [Tooltip("Player current health amount")]
     public int CurrentHealth;

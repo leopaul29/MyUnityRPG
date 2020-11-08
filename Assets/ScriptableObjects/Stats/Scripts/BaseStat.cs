@@ -6,8 +6,8 @@ using UnityEngine;
 // https://www.youtube.com/watch?v=SH25f3cXBVc
 [Serializable]
 // to create an object in the editor
-[CreateAssetMenu(fileName = "New CharacterStat", menuName = "Stats/CharacterStat")]
-public class CharacterStat : ScriptableObject
+[CreateAssetMenu(fileName = "New BaseStat", menuName = "Stats System/BaseStat")]
+public class BaseStat : ScriptableObject
 {
     public float BaseValue;
 
@@ -33,14 +33,14 @@ public class CharacterStat : ScriptableObject
     // allow other class to read the statModifiers list
     public readonly ReadOnlyCollection<StatModifier> StatModifiers;
 
-    public CharacterStat()
+    public BaseStat()
     {
         statModifiers = new List<StatModifier>();
         // copy StatModifiers as readonly
         StatModifiers = statModifiers.AsReadOnly();
     }
 
-    public CharacterStat(float baseValue) : this()
+    public BaseStat(float baseValue) : this()
     {
         BaseValue = baseValue;
     }

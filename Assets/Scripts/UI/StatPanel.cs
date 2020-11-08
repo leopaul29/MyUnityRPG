@@ -7,7 +7,7 @@ public class StatPanel : MonoBehaviour
     [SerializeField] StatDisplay[] statDisplays;
     [SerializeField] string[] statNames;
 
-    private CharacterStat[] stats;
+    private BaseStat[] stats;
     Player player;
 
     private void OnValidate()
@@ -24,11 +24,11 @@ public class StatPanel : MonoBehaviour
 
     public void UpdateStats()
     {
-        SetStats(player.Armor, player.Strength, player.Agility, player.Intelligence, player.Stamina);
+        SetStats(player.characterStats.Armor, player.characterStats.Strength, player.characterStats.Agility, player.characterStats.Intelligence, player.characterStats.Stamina);
         UpdateStatValues();
     }
 
-    public void SetStats(params CharacterStat[] charStats)
+    public void SetStats(params BaseStat[] charStats)
     {
         stats = charStats;
 

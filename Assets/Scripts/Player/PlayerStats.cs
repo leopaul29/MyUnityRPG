@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : CharacterStats
+public class PlayerStats : CharacterStatsBin
 {
     public GameObject playerHand;
     public GameObject equippedWeapon { get; set; }

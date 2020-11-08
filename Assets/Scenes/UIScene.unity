@@ -685,6 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1397015378}
   inventoryUI: {fileID: 1317422097}
+  inventoryObject: {fileID: 11400000, guid: 89bc19585dc1a74418926d24aa58a858, type: 2}
 --- !u!114 &52158975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11851,6 +11852,11 @@ PrefabInstance:
       propertyPath: Armor
       value: 
       objectReference: {fileID: 11400000, guid: 04da0adae9440854b883aa655f7212b2,
+        type: 2}
+    - target: {fileID: 964155589, guid: 9fa5684c0f1e3a849ba78fa5cc884502, type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 87cc1156f0bb52f48bb9fd413bbfd983,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa5684c0f1e3a849ba78fa5cc884502, type: 3}

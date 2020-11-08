@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 
 public class StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private CharacterStat _stat;
-    public CharacterStat Stat
+    private BaseStat _stat;
+    public BaseStat Stat
     {
         get { return _stat; }
         set

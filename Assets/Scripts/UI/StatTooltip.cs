@@ -15,7 +15,7 @@ public class StatTooltip : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ShowTooltip(CharacterStat stat, string statName)
+    public void ShowTooltip(BaseStat stat, string statName)
     {
         StatNameText.text = GetStatTopText(stat, statName);
         StatModifiersText.text = GetStatModifiersText(stat);
@@ -27,7 +27,7 @@ public class StatTooltip : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private string GetStatTopText(CharacterStat stat, string statName)
+    private string GetStatTopText(BaseStat stat, string statName)
     {
         sb.Length = 0;
         sb.Append(statName);
@@ -49,7 +49,7 @@ public class StatTooltip : MonoBehaviour
         return sb.ToString();
     }
 
-    private string GetStatModifiersText(CharacterStat stat)
+    private string GetStatModifiersText(BaseStat stat)
     {
         sb.Length = 0;
 

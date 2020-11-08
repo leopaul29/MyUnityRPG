@@ -21,14 +21,14 @@ public class CharacterCombat : MonoBehaviour
     // time of the last attack
     float lastAttackTime;
     // character stats
-    CharacterStats myStats;
+    CharacterStatsBin myStats;
 
     // CharacterAnimator.OnAttack
     public event System.Action OnAttack;
 
     private void Start()
     {
-        myStats = GetComponent<CharacterStats>();
+        myStats = GetComponent<CharacterStatsBin>();
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class CharacterCombat : MonoBehaviour
         // add check for time since I'm a target of enemy / be hit
     }
 
-    public void Attack(CharacterStats targetStats)
+    public void Attack(CharacterStatsBin targetStats)
     {
         // if it's time to attack then attack
         if(attackCooldown <= 0f)
@@ -65,7 +65,7 @@ public class CharacterCombat : MonoBehaviour
     }
 
     // Coroutine to delay the damage for the animation
-    IEnumerator DoDamage(CharacterStats stats, float delay)
+    IEnumerator DoDamage(CharacterStatsBin stats, float delay)
     {
         // wait animation delay
         yield return new WaitForSeconds(delay);

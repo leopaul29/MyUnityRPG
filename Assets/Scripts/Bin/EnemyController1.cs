@@ -43,7 +43,7 @@ public class EnemyController1 : MonoBehaviour
             if (distance <= agent.stoppingDistance + margin)
             {
                 // Attack the target
-                CharacterStats targetStats = target.GetComponent<CharacterStats>();
+                CharacterStatsBin targetStats = target.GetComponent<CharacterStatsBin>();
                 if(targetStats != null)
                 {
                     combat.Attack(targetStats);

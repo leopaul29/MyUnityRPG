@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f4ac8385b92c04b83046316c48b99a, type: 3}
   m_Name: PlayerStamina
   m_EditorClassIdentifier: 
-  BaseValue: 5
+  BaseValue: 10

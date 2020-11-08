@@ -8,7 +8,7 @@ public enum StatModType
 }
 
 // to create an object in the editor
-[CreateAssetMenu(fileName = "New StatModifier", menuName = "Stats/StatModifier")]
+[CreateAssetMenu(fileName = "New StatModifier", menuName = "Stats System/StatModifier")]
 public class StatModifier : ScriptableObject
 {
     public float Value;

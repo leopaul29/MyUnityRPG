@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21403cd48b9f9a4999c1f6ea330cf7d, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  Armor: {fileID: 11400000, guid: 04da0adae9440854b883aa655f7212b2, type: 2}
+  Strength: {fileID: 11400000, guid: 9879aa0909a821c4e9b5d01313b46c22, type: 2}
+  Agility: {fileID: 11400000, guid: c63bb9c7b007a6e4cacdbd0c1b999ddc, type: 2}
+  Intelligence: {fileID: 11400000, guid: 184e2202134f6264bb3490fd69afea6c, type: 2}
+  Stamina: {fileID: 11400000, guid: d15a22663fc0d2b41aa84095b73e48c4, type: 2}

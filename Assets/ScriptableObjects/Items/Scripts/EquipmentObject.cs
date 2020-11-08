@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EquipmentSlotNames { Head, Necklace, Shoulders, Cape, Chest, Wrists, Gloves, Belt, Legs, Feet, Rings, Scroll, Weapon, Shield }
+
 // to create an object in the editor
 [CreateAssetMenu(fileName = "New Equipment Object", menuName = "Inventory System/Items/Equipment")]
 public class EquipmentObject : ItemObject
 {
+    [Header("Equipment type")]
+    public EquipmentSlotNames equipSlotName;
+    [Space]
     [Header("Flat stats")]
+    public int ArmorBonus;
     public int StrengthBonus;
-    public StatModifier AgilityBonus;
+    public int AgilityBonus;
     public int IntelligenceBonus;
     public int StaminaBonus;
     [Space]
     [Header("Percent stats")]
+    public float ArmorPercentBonus;
     public float StrengthPercentBonus;
     public float AgilityPercentBonus;
     public float IntelligencePercentBonus;
     public float StaminaPercentBonus;
-    [Space]
-    [Header("Equipment type")]
-    public EquipmentSlotNames equipSlotName;
 
     public void Awake()
     {
@@ -50,35 +54,30 @@ public class EquipmentObject : ItemObject
     public void Equip(Character c)
     {
         if (StrengthBonus != 0)
-            c.Strength.AddModifier(new StatModifier(StrengthBonus, StatModType.Flat, this));
-        //if (AgilityBonus != 0)
-        //c.Agility.AddModifier(new StatModifier(AgilityBonus, StatModType.Flat, this));
-        if (AgilityBonus.Value != 0) {
-            AgilityBonus.Source = this;
-            c.Agility.AddModifier(AgilityBonus);
-
-        }
+            c.characterStats.Strength.AddModifier(new StatModifier(StrengthBonus, StatModType.Flat, this));
+        if (AgilityBonus != 0)
+            c.characterStats.Agility.AddModifier(new StatModifier(AgilityBonus, StatModType.Flat, this));        
         if (IntelligenceBonus != 0)
-            c.Intelligence.AddModifier(new StatModifier(IntelligenceBonus, StatModType.Flat, this));
+            c.characterStats.Intelligence.AddModifier(new StatModifier(IntelligenceBonus, StatModType.Flat, this));
         if (StaminaBonus != 0)
-            c.Stamina.AddModifier(new StatModifier(StaminaBonus, StatModType.Flat, this));
+            c.characterStats.Stamina.AddModifier(new StatModifier(StaminaBonus, StatModType.Flat, this));
 
         if (StrengthPercentBonus != 0)
-            c.Strength.AddModifier(new StatModifier(StrengthPercentBonus, StatModType.PercentMult, this));
+            c.characterStats.Strength.AddModifier(new StatModifier(StrengthPercentBonus, StatModType.PercentMult, this));
         if (AgilityPercentBonus != 0)
-            c.Agility.AddModifier(new StatModifier(AgilityPercentBonus, StatModType.PercentMult, this));
+            c.characterStats.Agility.AddModifier(new StatModifier(AgilityPercentBonus, StatModType.PercentMult, this));
         if (IntelligencePercentBonus != 0)
-            c.Intelligence.AddModifier(new StatModifier(IntelligencePercentBonus, StatModType.PercentMult, this));
+            c.characterStats.Intelligence.AddModifier(new StatModifier(IntelligencePercentBonus, StatModType.PercentMult, this));
         if (StaminaPercentBonus != 0)
-            c.Stamina.AddModifier(new StatModifier(StaminaPercentBonus, StatModType.PercentMult, this));
+            c.characterStats.Stamina.AddModifier(new StatModifier(StaminaPercentBonus, StatModType.PercentMult, this));
     }
 
     public void Unequip(Character c)
     {
-        c.Strength.RemoveAllModifiersFromSource(this);
-        c.Agility.RemoveAllModifiersFromSource(this);
-        c.Intelligence.RemoveAllModifiersFromSource(this);
-        c.Stamina.RemoveAllModifiersFromSource(this);
+        c.characterStats.Strength.RemoveAllModifiersFromSource(this);
+        c.characterStats.Agility.RemoveAllModifiersFromSource(this);
+        c.characterStats.Intelligence.RemoveAllModifiersFromSource(this);
+        c.characterStats.Stamina.RemoveAllModifiersFromSource(this);
     }
 
     public override string GetItemType()
@@ -89,12 +88,13 @@ public class EquipmentObject : ItemObject
     public override string GetDescription()
     {
         sb.Length = 0;
+        AddStat(ArmorBonus, "Armor");
         AddStat(StrengthBonus, "Strength");
-        //AddStat(AgilityBonus, "Agility");
-        AddStat(AgilityBonus.Value, "Agility");
+        AddStat(AgilityBonus, "Agility");
         AddStat(IntelligenceBonus, "Intelligence");
         AddStat(StaminaBonus, "Stamina");
 
+        AddStat(ArmorPercentBonus, "Armor", isPercent: true);
         AddStat(StrengthPercentBonus, "Strength", isPercent: true);
         AddStat(AgilityPercentBonus, "Agility", isPercent: true);
         AddStat(IntelligencePercentBonus, "Intelligence", isPercent: true);
@@ -127,5 +127,3 @@ public class EquipmentObject : ItemObject
         }
     }
 }
-
-public enum EquipmentSlotNames { Head, Necklace, Shoulders, Cape, Chest, Wrists, Gloves, Belt, Legs, Feet, Rings, Scroll, Weapon, Shield }
