@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Default Object", menuName = "Inventory System/Items/Food")]
+[CreateAssetMenu(fileName = "New Food Object", menuName = "Inventory System/Items/Food")]
 public class FoodObject : ItemObject
 {
+    [Header("FoodObject")]
     public int restoreHealthValue;
 
     public void Awake()

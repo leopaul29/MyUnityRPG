@@ -11,14 +11,13 @@ public enum ItemType
     Default
 }
 
-// to create an object in the editor
-[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item")]
 // ScriptableObject is like a blueprint, not a GameObject
 public abstract class ItemObject : ScriptableObject, ITooltipDescription
 {
+    [Header("ItemObject")]
     public GameObject prefab;
     public ItemType type;
-    [TextArea(15, 20)]
+    [TextArea(5, 20)]
     public string description;
 
     [SerializeField] string id;

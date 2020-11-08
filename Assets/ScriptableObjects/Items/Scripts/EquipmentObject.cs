@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // to create an object in the editor
-[CreateAssetMenu(fileName = "New Equipment", menuName = "Items/Equipment")]
-public class Equipment : ItemObject
+[CreateAssetMenu(fileName = "New Equipment Object", menuName = "Inventory System/Items/Equipment")]
+public class EquipmentObject : ItemObject
 {
     [Header("Flat stats")]
     public int StrengthBonus;
@@ -19,7 +19,12 @@ public class Equipment : ItemObject
     public float StaminaPercentBonus;
     [Space]
     [Header("Equipment type")]
-    public EquipmentSlotNames equipSlotName;  
+    public EquipmentSlotNames equipSlotName;
+
+    public void Awake()
+    {
+        type = ItemType.Equipment;
+    }
 
     public override void Use()
     {

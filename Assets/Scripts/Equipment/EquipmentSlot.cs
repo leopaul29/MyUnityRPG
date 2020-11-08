@@ -6,9 +6,9 @@ public class EquipmentSlot : MonoBehaviour
     public Image icon;
     public Button removeButon;
 
-    Equipment item;
+    EquipmentObject item;
 
-    public void AddItem(Equipment newItem)
+    public void AddItem(EquipmentObject newItem)
     {
         item = newItem;
 

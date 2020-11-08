@@ -18,14 +18,14 @@ public class EquipmentManager : MonoBehaviour
 
         // init new Equipment Array with the length of EquipmentSlot that exist
         int numSlots = System.Enum.GetNames(typeof(EquipmentSlotNames)).Length;
-        CurrentEquipment = new Equipment[numSlots];
+        CurrentEquipment = new EquipmentObject[numSlots];
     }
     #endregion
 
-    public Equipment[] CurrentEquipment { get; private set; }
+    public EquipmentObject[] CurrentEquipment { get; private set; }
 
     // PlayerStats.OnEquipmentChanged
-    public delegate void OnEquipmentChangedUpdateStats(Equipment newItem, Equipment oldItem);
+    public delegate void OnEquipmentChangedUpdateStats(EquipmentObject newItem, EquipmentObject oldItem);
     public OnEquipmentChangedUpdateStats onEquipmentChangedUpdateStats;
 
     // EquipmentUI.UpdateUI
@@ -39,9 +39,9 @@ public class EquipmentManager : MonoBehaviour
         inventory = InventoryManager.instance;
     }
 
-    public void Equip (Equipment newItem)
+    public void Equip (EquipmentObject newItem)
     {
-        Equipment oldItem = null;
+        EquipmentObject oldItem = null;
 
         // Get enum index of item's equipSlot
         int slotIndex = (int)newItem.equipSlotName;
@@ -75,7 +75,7 @@ public class EquipmentManager : MonoBehaviour
         // if there is already something equiped, put it back in bag
         if (CurrentEquipment[slotIndex] != null)
         {
-            Equipment oldItem = CurrentEquipment[slotIndex];
+            EquipmentObject oldItem = CurrentEquipment[slotIndex];
 
             inventory.Add(oldItem);
 

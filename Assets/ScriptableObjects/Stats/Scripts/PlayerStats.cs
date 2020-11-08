@@ -15,14 +15,14 @@ public class PlayerStats : CharacterStats
         EquipmentManager.instance.onEquipmentChangedUpdateStats += OnEquipmentChanged;
     }
 
-    void OnEquipmentChanged (Equipment newItem, Equipment oldItem)
+    void OnEquipmentChanged (EquipmentObject newItem, EquipmentObject oldItem)
     {
         if (oldItem != null)
         {
             //Armor.RemoveModifier(oldItem.Armor);
             //Damage.RemoveModifier(oldItem.Damage);
 
-            if (oldItem.GetType() == typeof(Equipment) && ((Equipment)oldItem).equipSlotName == EquipmentSlotNames.Weapon)
+            if (oldItem.GetType() == typeof(EquipmentObject) && ((EquipmentObject)oldItem).equipSlotName == EquipmentSlotNames.Weapon)
             {
                 // destroy equipment GameObject
                 Destroy(playerHand.transform.GetChild(0).gameObject);
@@ -35,7 +35,7 @@ public class PlayerStats : CharacterStats
             //Armor.AddModifier(newItem.Armor);
             //Damage.AddModifier(newItem.Damage);
 
-            if(newItem.GetType() == typeof(Equipment) && ((Equipment)newItem).equipSlotName == EquipmentSlotNames.Weapon)
+            if(newItem.GetType() == typeof(EquipmentObject) && ((EquipmentObject)newItem).equipSlotName == EquipmentSlotNames.Weapon)
             {
                 // instanciate Weapon GameObject at playerHand position&rotation
                 equippedWeapon = (GameObject)Instantiate(
