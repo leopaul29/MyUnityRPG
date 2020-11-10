@@ -53,6 +53,8 @@ public class EquipmentObject : ItemObject
 
     public void Equip(Character c)
     {
+        if (ArmorBonus != 0)
+            c.characterStats.Armor.AddModifier(new StatModifier(ArmorBonus, StatModType.Flat, this));
         if (StrengthBonus != 0)
             c.characterStats.Strength.AddModifier(new StatModifier(StrengthBonus, StatModType.Flat, this));
         if (AgilityBonus != 0)
@@ -62,6 +64,8 @@ public class EquipmentObject : ItemObject
         if (StaminaBonus != 0)
             c.characterStats.Stamina.AddModifier(new StatModifier(StaminaBonus, StatModType.Flat, this));
 
+        if (ArmorPercentBonus != 0)
+            c.characterStats.Armor.AddModifier(new StatModifier(ArmorPercentBonus, StatModType.PercentMult, this));
         if (StrengthPercentBonus != 0)
             c.characterStats.Strength.AddModifier(new StatModifier(StrengthPercentBonus, StatModType.PercentMult, this));
         if (AgilityPercentBonus != 0)
@@ -74,6 +78,7 @@ public class EquipmentObject : ItemObject
 
     public void Unequip(Character c)
     {
+        c.characterStats.Armor.RemoveAllModifiersFromSource(this);
         c.characterStats.Strength.RemoveAllModifiersFromSource(this);
         c.characterStats.Agility.RemoveAllModifiersFromSource(this);
         c.characterStats.Intelligence.RemoveAllModifiersFromSource(this);

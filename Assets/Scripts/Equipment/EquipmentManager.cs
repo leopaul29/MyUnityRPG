@@ -41,18 +41,20 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip (EquipmentObject newItem)
     {
-        EquipmentObject oldItem = null;
-
         // Get enum index of item's equipSlot
         int slotIndex = (int)newItem.equipSlotName;
 
+        UnEquip(slotIndex);
+
         // if there is already something equiped, put it back in bag
-        if (CurrentEquipment[slotIndex] != null)
+        /*if (CurrentEquipment[slotIndex] != null)
         {
+            EquipmentObject oldItem = null;
+
             oldItem = CurrentEquipment[slotIndex];
 
             inventory.Add(oldItem);
-        }
+        }*/
 
         CurrentEquipment[slotIndex] = newItem;
 
