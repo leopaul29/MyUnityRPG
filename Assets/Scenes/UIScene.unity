@@ -2427,7 +2427,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 11,1
 --- !u!222 &389237537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4393,7 +4393,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &676627302
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4472,7 +4472,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &676855084
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5114,6 +5114,7 @@ MonoBehaviour:
   - Agility
   - Intelligence
   - Stamina
+  playerStats: {fileID: 11400000, guid: 87cc1156f0bb52f48bb9fd413bbfd983, type: 2}
 --- !u!1 &810776604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8627,7 +8628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 246
 --- !u!222 &1594150593
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11169,7 +11170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 70
 --- !u!222 &2032477366
 CanvasRenderer:
   m_ObjectHideFlags: 0

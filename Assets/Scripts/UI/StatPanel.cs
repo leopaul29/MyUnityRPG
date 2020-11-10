@@ -8,23 +8,29 @@ public class StatPanel : MonoBehaviour
     [SerializeField] string[] statNames;
 
     private BaseStat[] stats;
-    Player player;
+    public CharacterStats playerStats;
 
     private void OnValidate()
     {
         statDisplays = GetComponentsInChildren<StatDisplay>();
         UpdateStatNames();
+        UpdateStats();
     }
 
     public void Start()
     {
-        player = PlayerManager.instance.Player;
-        UIEventHandler.OnStatsChanged += UpdateStats;
+        //player = PlayerManager.instance.Player;
+        //UIEventHandler.OnStatsChanged += UpdateStats;
+    }
+
+    private void Update()
+    {
+        UpdateStatValues();
     }
 
     public void UpdateStats()
     {
-        SetStats(player.characterStats.Armor, player.characterStats.Strength, player.characterStats.Agility, player.characterStats.Intelligence, player.characterStats.Stamina);
+        SetStats(playerStats.Armor, playerStats.Strength, playerStats.Agility, playerStats.Intelligence, playerStats.Stamina);
         UpdateStatValues();
     }
 
