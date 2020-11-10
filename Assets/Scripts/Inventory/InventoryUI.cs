@@ -9,8 +9,6 @@ public class InventoryUI : MonoBehaviour
     // Inventory Singleton
     InventoryManager inventory;
 
-    public InventoryObject inventoryObject;
-
     // Get all InventorySlot of the UI
     InventorySlotUI[] slots;
 

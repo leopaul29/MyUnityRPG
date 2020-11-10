@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118fab3e0cc4af9418d30c21bef97183, type: 3}
   m_Name: Testing Inventory
   m_EditorClassIdentifier: 
-  Container:
-  - item: {fileID: 11400000, guid: 4b9d0196e96509c4aa95809e69a25a77, type: 2}
-    amount: 2
+  savePath: /inventoryTest.save
+  database: {fileID: 11400000, guid: d18714bf71fdd5d4ea8765aa1837fecb, type: 2}
+  space: 20
+  Container: []

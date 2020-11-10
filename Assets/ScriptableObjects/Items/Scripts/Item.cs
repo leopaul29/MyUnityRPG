@@ -20,8 +20,8 @@ public abstract class ItemObject : ScriptableObject, IDescription
     [TextArea(5, 20)]
     public string description;
 
-    [SerializeField] string id;
-    public string ID { get { return id; } }
+    //[SerializeField] string id;
+    //public string ID { get { return id; } }
     public string ItemName;
     public Sprite Icon = null;
     [Range(1, 100)]
@@ -34,8 +34,8 @@ public abstract class ItemObject : ScriptableObject, IDescription
 #if UNITY_EDITOR
     protected virtual void OnValidate()
     {
-        string path = AssetDatabase.GetAssetPath(this);
-        id = AssetDatabase.AssetPathToGUID(path);
+        //string path = AssetDatabase.GetAssetPath(this);
+        //id = AssetDatabase.AssetPathToGUID(path);
     }
 #endif
 

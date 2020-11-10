@@ -18,6 +18,8 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
+    public InventoryObject inventoryObject;
+
     // Listener to call InventoryUI.UpdateUI
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -30,12 +32,14 @@ public class InventoryManager : MonoBehaviour
     {
         //if(!item.isDefaultItem)
         //{
-            if(items.Count >= space)
+        if (items.Count >= space)
             {
                 Debug.Log("Not enough room");
                 return false; ;
             }
-            items.Add(item);
+        //items.Add(item);
+        
+        inventoryObject.AddItem(item, 1);
 
             onItemChangedCallback?.Invoke();
         //}
@@ -48,5 +52,17 @@ public class InventoryManager : MonoBehaviour
         items.Remove(item);
 
         onItemChangedCallback?.Invoke();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            inventoryObject.Save();
+        }
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            inventoryObject.Load();
+        }
     }
 }

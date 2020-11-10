@@ -685,7 +685,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1397015378}
   inventoryUI: {fileID: 1317422097}
-  inventoryObject: {fileID: 11400000, guid: 89bc19585dc1a74418926d24aa58a858, type: 2}
 --- !u!114 &52158975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 11,1
+  m_Text: 10
 --- !u!222 &389237537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6044,6 +6043,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3007845416463653746}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &964155596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964155587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663555c1af4764343b8f811234c304f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: acea9820adbd02645a966e3742441ff8, type: 2}
 --- !u!1 &1001146539
 GameObject:
   m_ObjectHideFlags: 0
@@ -8628,7 +8640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 246
+  m_Text: 10
 --- !u!222 &1594150593
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11170,7 +11182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 70
+  m_Text: 10
 --- !u!222 &2032477366
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11629,6 +11641,12 @@ PrefabInstance:
       propertyPath: dialoguePanelUI
       value: 
       objectReference: {fileID: 936479027}
+    - target: {fileID: 350238738207577645, guid: 769dac3dbf73a144d9244164d4e325c1,
+        type: 3}
+      propertyPath: inventoryObject
+      value: 
+      objectReference: {fileID: 11400000, guid: acea9820adbd02645a966e3742441ff8,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 769dac3dbf73a144d9244164d4e325c1, type: 3}
 --- !u!114 &350238738774972230 stripped
