@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image itemIcon;
     public Button removeButon;
@@ -69,7 +69,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         HideTooltip(this);
     }
 
-    private void ShowTooltip(InventorySlot itemSlot)
+    private void ShowTooltip(InventorySlotUI itemSlot)
     {
         if (itemSlot.item != null)
         {
@@ -77,7 +77,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
-    private void HideTooltip(InventorySlot itemSlot)
+    private void HideTooltip(InventorySlotUI itemSlot)
     {
         if (itemTooltip.gameObject.activeSelf)
         {

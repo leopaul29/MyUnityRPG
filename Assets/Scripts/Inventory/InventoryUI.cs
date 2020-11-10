@@ -9,8 +9,10 @@ public class InventoryUI : MonoBehaviour
     // Inventory Singleton
     InventoryManager inventory;
 
+    public InventoryObject inventoryObject;
+
     // Get all InventorySlot of the UI
-    InventorySlot[] slots;
+    InventorySlotUI[] slots;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         // find and store all InventorySlots components 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        slots = itemsParent.GetComponentsInChildren<InventorySlotUI>();
 
         UpdateUI();
     }

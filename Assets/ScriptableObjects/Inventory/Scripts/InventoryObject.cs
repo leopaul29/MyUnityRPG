@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName ="Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
-    public List<InventorySlotA> Container = new List<InventorySlotA>();
+    public int space = 20;
+    public List<InventorySlot> Container = new List<InventorySlot>();
     public void AddItem(ItemObject _item, int _amount)
     {
         bool hasItem = false;
@@ -19,20 +20,20 @@ public class InventoryObject : ScriptableObject
                 break;
             }
         }
-        if (!hasItem)
-        {
-            Container.Add(new InventorySlotA(_item, _amount));
+        if (!hasItem && Container.Count >= space) { 
+            Debug.Log("Not enough room");
+            Container.Add(new InventorySlot(_item, _amount));
         }
     }
 }
 
 [System.Serializable]
-public class InventorySlotA
+public class InventorySlot
 {
     public ItemObject item;
     public int amount;
 
-    public InventorySlotA(ItemObject _item, int _amount)
+    public InventorySlot(ItemObject _item, int _amount)
     {
         item = _item;
         amount = _amount;
