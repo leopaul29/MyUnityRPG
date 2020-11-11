@@ -685,6 +685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1397015378}
   inventoryUI: {fileID: 1317422097}
+  inventory: {fileID: 11400000, guid: acea9820adbd02645a966e3742441ff8, type: 2}
 --- !u!114 &52158975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,7 +2427,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 11,1
 --- !u!222 &389237537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8640,7 +8641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 22
 --- !u!222 &1594150593
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11182,7 +11183,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 14
 --- !u!222 &2032477366
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11644,6 +11645,12 @@ PrefabInstance:
     - target: {fileID: 350238738207577645, guid: 769dac3dbf73a144d9244164d4e325c1,
         type: 3}
       propertyPath: inventoryObject
+      value: 
+      objectReference: {fileID: 11400000, guid: acea9820adbd02645a966e3742441ff8,
+        type: 2}
+    - target: {fileID: 350238738207577647, guid: 769dac3dbf73a144d9244164d4e325c1,
+        type: 3}
+      propertyPath: inventory
       value: 
       objectReference: {fileID: 11400000, guid: acea9820adbd02645a966e3742441ff8,
         type: 2}

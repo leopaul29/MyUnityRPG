@@ -32,11 +32,12 @@ public class EquipmentManager : MonoBehaviour
     public delegate void OnEquipmentChangedUpdateUI();
     public OnEquipmentChangedUpdateUI onEquipmentChangedUpdateUI;
 
-    InventoryManager inventory;
+    //InventoryManager inventory;
+    public InventoryObject inventory;
 
     void Start()
     {
-        inventory = InventoryManager.instance;
+        //inventory = InventoryManager.instance;
     }
 
     public void Equip (EquipmentObject newItem)
@@ -61,6 +62,8 @@ public class EquipmentManager : MonoBehaviour
         // Update when equip
         // add stats
         newItem.Equip(PlayerManager.instance.Player);
+
+        inventory.RemoveItem(newItem, 1);
         /*if (onEquipmentChangedUpdateStats != null)
         {
             onEquipmentChangedUpdateStats.Invoke(newItem, oldItem);
@@ -79,7 +82,7 @@ public class EquipmentManager : MonoBehaviour
         {
             EquipmentObject oldItem = CurrentEquipment[slotIndex];
 
-            inventory.Add(oldItem);
+            inventory.AddItem(oldItem, 1);
 
             CurrentEquipment[slotIndex] = null;
 

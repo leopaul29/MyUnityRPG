@@ -36,9 +36,6 @@ public class EquipmentObject : ItemObject
 
         // Equip the item
         EquipmentManager.instance.Equip(this);
-
-        // Remove it from the inventory
-        RemoveFromInventory();
     }
 
     public override ItemObject GetCopy()

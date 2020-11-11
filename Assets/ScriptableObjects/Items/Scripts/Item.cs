@@ -15,6 +15,7 @@ public enum ItemType
 public abstract class ItemObject : ScriptableObject, IDescription
 {
     [Header("ItemObject")]
+    public int ID;
     public GameObject prefab;
     public ItemType type;
     [TextArea(5, 20)]
@@ -69,7 +70,7 @@ public abstract class ItemObject : ScriptableObject, IDescription
 
     public void RemoveFromInventory()
     {
-        InventoryManager.instance.Remove(this);
+        //InventoryManager.instance.Remove(this);
     }
 
     public virtual string GetDescription()
