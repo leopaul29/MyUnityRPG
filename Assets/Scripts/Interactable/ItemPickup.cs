@@ -5,28 +5,22 @@ using System;
 
 public class ItemPickup : Interactable
 {
-    //public static event  Action<ItemPickup> OnAnyItemPickedUp = delegate { };
+    public InventoryObject inventoryObject;
 
     public ItemObject item;
 
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Interacting with ItemPickup " + item.ItemName);
+        Debug.Log("Interacting with ItemPickup " + item.name);
 
         PickUp();
     }
 
     void PickUp()
     {
-        // Add to inventory
-        bool wasPickedUp = InventoryManager.instance.Add(item);
+        inventoryObject.AddItem(new Item(item), 1);
 
-        if(wasPickedUp)
-        {
-            Destroy(gameObject);
-        }
-
-        //OnAnyItemPickedUp(this);
+        Destroy(gameObject);
     }
 }
