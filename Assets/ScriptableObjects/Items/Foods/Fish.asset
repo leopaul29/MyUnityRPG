@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28bb4db4fd305c4593f556662a0f5c4, type: 3}
   m_Name: Fish
   m_EditorClassIdentifier: 
+  Id: 0
   prefab: {fileID: 0}
   type: 0
   description: Can be fished in lake.
-  id: ff18736bb0ddc944bad6c82f96e008d9
-  ItemName: 
-  Icon: {fileID: 0}
-  MaximumStacks: 1
+  Icon: {fileID: 21300000, guid: ad8c098403f05e84cb7339f76852081d, type: 3}
   ObjectSlug: 
   restoreHealthValue: 10
