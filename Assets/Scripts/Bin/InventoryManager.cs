@@ -26,43 +26,32 @@ public class InventoryManager : MonoBehaviour
 
     // Inventory size and list
     public int space = 20;
-    public List<ItemObject> items = new List<ItemObject>(); // should be a tab
+    //public List<ItemObject> items = new List<ItemObject>(); // should be a tab
 
-    public bool Add(ItemObject item)
+    public bool Add(Item item)
     {
-        //if(!item.isDefaultItem)
-        //{
+        /*if(!item.isDefaultItem)
+        {
         if (items.Count >= space)
             {
                 Debug.Log("Not enough room");
                 return false; ;
             }
-        //items.Add(item);
+        items.Add(item);
         
-        inventoryObject.AddItem(item, 1);
 
             onItemChangedCallback?.Invoke();
-        //}
+        }*/
+        inventoryObject.AddItem(item, 1);
 
         return true;
     }
 
-    public void Remove(ItemObject item)
+    public void Remove(Item item)
     {
-        items.Remove(item);
+        //inventoryObject.RemoveItem(item,1);
 
-        onItemChangedCallback?.Invoke();
+        //onItemChangedCallback?.Invoke();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            inventoryObject.Save();
-        }
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            inventoryObject.Load();
-        }
-    }
 }
